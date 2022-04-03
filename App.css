@@ -1,0 +1,33 @@
+#brand{
+  display: flex;
+  align-items: center
+
+}
+
+.searchArea{
+  background-color: black;
+  color:white;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  height: 20vh;
+  align-items: center;
+}
+
+.content{
+  padding:50px 50px;
+  display:flex;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-evenly;
+}
+
+.card_align{
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+}
