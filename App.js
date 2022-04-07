@@ -22,7 +22,7 @@ function App() {
   const [card_data, setCard_data] = useState([]);
 
   const handleSearch = async () => {
-    await fetch("http://localhost:4000/get-products", {
+    await fetch("https://ecommerce-scrapper-server.herokuapp.com/get-products", {
       method: "POST",
       body: JSON.stringify({
         searchString: search,
