@@ -25,7 +25,7 @@ function App() {
 
   //handles click on search button
   const handleSearch = async () => {
-    //using fetch promise to get data of products
+    //using fetch promise to get data
     await fetch(
       "https://ecommerce-scrapper-server.herokuapp.com/get-products",
       {
