@@ -16,24 +16,32 @@ import Input from "@mui/material/Input";
 function App() {
   //using usestate for total no of items in the cart
   const [items, setItems] = useState(0);
+
+  //using usestate for search text
   const [search, setSearch] = useState("");
 
   //products
   const [card_data, setCard_data] = useState([]);
 
+  //handles click on search button
   const handleSearch = async () => {
-    await fetch("https://ecommerce-scrapper-server.herokuapp.com/get-products", {
-      method: "POST",
-      body: JSON.stringify({
-        searchString: search,
-      }),
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-      },
-    })
+    //using fetch promise to get data of products
+    await fetch(
+      "https://ecommerce-scrapper-server.herokuapp.com/get-products",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          searchString: search,
+        }),
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        //updating card data
         setCard_data(data);
       });
   };
@@ -54,6 +62,7 @@ function App() {
         </Container>
       </Navbar>
 
+      {/* search box */}
       <div className="searchArea">
         <Paper
           component="form"
@@ -68,13 +77,13 @@ function App() {
             sx={{ ml: 1, flex: 1 }}
             placeholder="Search Electronic Products"
             inputProps={"description"}
-            onChange={(event) => setSearch(event.target.value)}
+            onChange={(event) => setSearch(event.target.value)} //updates search text
           />
 
           <IconButton
             sx={{ p: "10px" }}
             aria-label="search"
-            onClick={handleSearch}
+            onClick={handleSearch} //handles click event
           >
             <SearchIcon />
           </IconButton>
@@ -82,6 +91,7 @@ function App() {
         <h6>Search terms related to Electronics Section</h6>
       </div>
 
+      {/* content area */}
       <div className="content">
         {/* mapping items to create individual cards + sending total cart items state as props */}
         {card_data.map((item) => (
